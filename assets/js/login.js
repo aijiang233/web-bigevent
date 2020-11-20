@@ -34,20 +34,18 @@ $(function() {
     // 监听注册表单的提交事件
     $('#form_reg').on('submit', function(e) {
         // 1. 阻止默认的提交行为
-        e.preventDefault();
-        // 2. 发起Ajax的POST请求
+        e.preventDefault()
+            // 2. 发起Ajax的POST请求
         var data = {
-            //属性选择
             username: $('#form_reg [name=username]').val(),
             password: $('#form_reg [name=password]').val()
-        };
-        //弹出层使用
+        }
         $.post('/api/reguser', data, function(res) {
             if (res.status !== 0) {
                 return layer.msg(res.message)
             }
-            layer.msg('注册成功，请登录！');
-            // 模拟人的点击行为
+            layer.msg('注册成功，请登录！')
+                // 模拟人的点击行为
             $('#link_login').click()
         })
     })
@@ -65,12 +63,11 @@ $(function() {
                 if (res.status !== 0) {
                     return layer.msg('登录失败！')
                 }
-                layer.msg('登录成功！');
-                // 将登录成功得到的 token 字符串，保存到 localStorage 中
+                layer.msg('登录成功！')
+                    // 将登录成功得到的 token 字符串，保存到 localStorage 中
                 localStorage.setItem('token', res.token)
                     // 跳转到后台主页
                 location.href = '/大事件项目/index.html'
-
             }
         })
     })
